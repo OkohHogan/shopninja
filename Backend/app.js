@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 const ErrorHandler = require('../Backend/middleware/error');
 const cookieParser = require('cookie-parser');
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 //Routes Imports
 const product = require("./routes/ProductRoute");
@@ -19,6 +21,5 @@ app.use("/api/v2",cart);
 
 //for error handling
 app.use(ErrorHandler);
-
 
 module.exports = app;
